@@ -1,0 +1,18 @@
+/* app/globals.css */
+@import "tailwindcss";
+
+/* tu CSS adicional debajo */
+:root {
+  --bg: #f5efe9;
+  --ink: #1f1f1f;
+}
+html, body { background: var(--bg); color: var(--ink); }
+
+.container {
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+@media (min-width: 640px) {
+  .container { padding-inline: 1.5rem; }
+}
