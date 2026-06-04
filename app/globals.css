@@ -99,6 +99,10 @@ h1, h2, h3, h4, h5 {
 /* ─── Links ───────────────────────────────────────────────────────────────── */
 a { transition: opacity 0.2s ease, color 0.2s ease; }
 
+/* ─── Orbit animation keyframes (used by BlockThree) ─────────────────────── */
+@keyframes orbit-cw  { from { transform: rotate(  0deg); } to { transform: rotate( 360deg); } }
+@keyframes orbit-ccw { from { transform: rotate(  0deg); } to { transform: rotate(-360deg); } }
+
 /* ─── Section scroll-margin ──────────────────────────────────────────────── */
 /* Applied to every section with an id anchor so the sticky nav never overlaps */
 section[id] {
