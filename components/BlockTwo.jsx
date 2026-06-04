@@ -1,66 +1,82 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 
-export default function BlockTwo() {
+const ease = [0.25, 0.1, 0.25, 1];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 22 },
+  show:   { opacity: 1, y: 0, transition: { duration: 0.82, ease } },
+};
+const stagger = {
+  hidden: {},
+  show:   { transition: { staggerChildren: 0.13 } },
+};
+
+export default function BlockTwo({ t = {} }) {
   return (
     <section
       id="subtle-art"
-      className="
-        relative
-        py-12 md:py-16 lg:py-20
-        /* Degradado gris → transparente para fundir con el fondo beige global */
-        bg-[linear-gradient(90deg,#eeeeee_0%,rgba(238,238,238,0.85)_40%,rgba(238,238,238,0)_75%)]
-      "
+      className="relative py-16 md:py-20 lg:py-28 overflow-hidden"
+      style={{
+        background: "linear-gradient(105deg, #EDE4D8 0%, #F3EDE4 40%, rgba(250,247,242,0) 80%)",
+      }}
     >
-      <div className="container relative">
-        {/* Divisor vertical suave (solo desktop) */}
-        <div className="hidden lg:block pointer-events-none absolute inset-y-0 left-1/2 -translate-x-1/2 w-px bg-[linear-gradient(180deg,transparent,rgba(0,0,0,0.10),transparent)]" />
+      <div className="container">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          {/* Imagen izquierda (ocupa ~mitad) */}
-          <div className="lg:col-span-6">
-            <div className="relative w-full">
+          {/* Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.85, ease }}
+            className="lg:col-span-6"
+          >
+            <div className="relative w-full rounded-2xl overflow-hidden shadow-[0_24px_64px_rgba(42,31,20,0.10)]">
               <Image
                 src="https://res.cloudinary.com/da6il8qmv/image/upload/v1760529912/marylizr_very_beautiful_model_no_makeup_clean_face_and_white_ba_5d74692c-f083-4332-975e-90e3d17e4564_uwpapn.png"
                 alt="Subtle beauty portrait"
                 width={1200}
                 height={820}
-                priority={false}
                 sizes="(min-width:1280px) 50vw, (min-width:1024px) 50vw, 100vw"
                 className="w-full h-auto object-contain"
               />
             </div>
-          </div>
+          </motion.div>
 
-          {/* Texto derecha */}
-          <div className="lg:col-span-6">
-            <h2 className="text-[#5b4b2f] font-semibold text-center lg:text-left leading-tight text-[clamp(1.75rem,3.6vw,2.5rem)]">
-              The Subtle Art of Elevating
-              <br /> Women’s Beauty Through
-              <br /> Makeup
-            </h2>
+          {/* Text */}
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.15 }}
+            className="lg:col-span-6"
+          >
+            <motion.span variants={fadeUp} className="flex items-center gap-3 mb-5">
+              <span className="block h-px w-8 bg-[#B8956A]/60" />
+              <span className="text-[12px] tracking-[0.14em] uppercase font-body text-[#B8956A]">
+                {t.eyebrow ?? "The Art of Beauty"}
+              </span>
+            </motion.span>
 
-            <div className="mt-6 space-y-5 text-[15px] leading-7 text-neutral-700 max-w-[62ch] mx-auto lg:mx-0">
-              <p>
-                Each stroke, blend, and finish is carefully curated to reflect
-                personality, mood, and moment. A dewy glow for effortless
-                elegance, a bold lip to make a statement, a sultry eye that
-                captivates with mystery—makeup transforms, but never overpowers.
-              </p>
-              <p>
-                At its core, makeup is about empowerment. When a woman feels
-                beautiful, she radiates confidence from within. The way she carries
-                herself, the way she smiles, the way she steps into the world—it’s
-                all touched by the power of artistry.
-              </p>
-              <p>
-                Beauty isn’t created—it’s revealed. And makeup, when done right, is
-                simply the brushstroke that highlights the masterpiece that already
-                exists.
-              </p>
-            </div>
-          </div>
+            <motion.h2
+              variants={fadeUp}
+              className="font-display font-semibold text-[#2A1F14] leading-[1.1] text-[clamp(2rem,4vw,2.9rem)]"
+            >
+              {t.heading ?? "The Subtle Art of Elevating Women's Beauty Through Makeup"}
+            </motion.h2>
+
+            <motion.div
+              variants={stagger}
+              className="mt-7 space-y-5 font-body text-[15px] leading-[1.85] text-[#2A1F14]/65 max-w-[58ch]"
+            >
+              {[t.p1, t.p2, t.p3].map((p, i) => (
+                <motion.p key={i} variants={fadeUp}>{p}</motion.p>
+              ))}
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

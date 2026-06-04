@@ -2,162 +2,129 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-export default function BlockContact() {
-  const smear =
-    "https://res.cloudinary.com/da6il8qmv/image/upload/v1760529904/shadow_zzrfhk.png";
+const ease = [0.25, 0.1, 0.25, 1];
+
+export default function BlockContact({ t = {} }) {
+  const smear = "https://res.cloudinary.com/da6il8qmv/image/upload/v1760529904/shadow_zzrfhk.png";
 
   return (
-    <section id="contact" className="scroll-mt-24 w-full bg-white">
-      <div className="mx-auto max-w-[1200px] px-6 md:px-10 py-16 md:py-24">
+    <section id="contact" className="w-full" style={{ background: "#FAF7F2" }}>
+      <div className="mx-auto max-w-[1200px] px-6 md:px-10 py-16 md:py-20 pb-20 md:pb-28">
         <div
-          className="relative overflow-hidden rounded-[28px] md:rounded-[44px]"
+          className="relative overflow-hidden rounded-[32px] md:rounded-[48px]"
           style={{
-            background:
-              "linear-gradient(90deg, #dfe2e5 0%, #cfd3d7 25%, #8f959d 100%)",
+            background: "linear-gradient(135deg, #2A1F14 0%, #3D2E1E 50%, #4A3828 100%)",
           }}
         >
-          {/* --- DESKTOP: imagen fija a la izquierda (por encima) --- */}
-          <div className="hidden md:block absolute inset-y-0 left-0 w-[25%] z-10 pointer-events-none select-none">
-            <Image
-              src={smear}
-              alt=""
-              fill
-              priority
-              className="object-cover object-left"
-              sizes="(min-width:1024px) 46vw, 100vw"
-            />
+          {/* Smear — desktop (blends left edge) */}
+          <div className="hidden md:block absolute inset-y-0 left-0 w-[28%] z-10 pointer-events-none select-none opacity-25 mix-blend-screen">
+            <Image src={smear} alt="" fill priority className="object-cover object-left" sizes="28vw" />
           </div>
 
-          {/* --- Píldora de TÍTULO: debajo de la imagen, corrida a la derecha --- */}
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="hidden md:block absolute z-0"
-            // Ajusta aquí si quieres moverla un poco más
-            style={{ top: "1.5rem", left: "22%" }}
-          >
-            <div
-              className="rounded-[56px] px-10 py-6 w-[640px]"
-              style={{
-                background:
-                  "linear-gradient(90deg, rgba(238,226,219,0.95) 0%, rgba(223,210,203,0.92) 100%)",
-              }}
-            >
-              <h2 className="text-[#3c3530] font-semibold text-5xl leading-tight">
-                Book Your Session
-              </h2>
-            </div>
-          </motion.div>
+          {/* Gold glow orb */}
+          <div
+            aria-hidden
+            className="absolute -top-24 -right-24 w-80 h-80 rounded-full pointer-events-none opacity-[0.08]"
+            style={{ background: "radial-gradient(circle, #B8956A 0%, transparent 70%)" }}
+          />
 
-          {/* --- MOBILE: imagen arriba --- */}
-          <div className="md:hidden relative w-full h-[220px] pointer-events-none select-none">
-            <Image
-              src={smear}
-              alt=""
-              fill
-              priority
-              className="object-cover object-top"
-              sizes="100vw"
-            />
+          {/* Smear — mobile (top strip) */}
+          <div className="md:hidden relative w-full h-[160px] pointer-events-none select-none opacity-20">
+            <Image src={smear} alt="" fill priority className="object-cover object-top mix-blend-screen" sizes="100vw" />
           </div>
 
-          {/* CONTENIDO */}
-          <div className="relative z-20 px-5 sm:px-7 md:px-10 pb-12 md:py-14">
-            {/* MOBILE: título en píldora */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.55, ease: "easeOut" }}
-              className="md:hidden flex justify-center"
-            >
-              <div
-                className="rounded-[40px] px-6 py-4 w-full text-center"
-                style={{
-                  background:
-                    "linear-gradient(90deg, rgba(238,226,219,0.95) 0%, rgba(223,210,203,0.92) 100%)",
-                }}
-              >
-                <h2 className="text-[#3c3530] font-semibold text-2xl">
-                  Book Your Session
-                </h2>
-              </div>
-            </motion.div>
+          {/* ── Content ──────────────────────────────── */}
+          <div className="relative z-20 px-6 sm:px-8 md:px-10 lg:px-14 pb-12 md:pb-16">
 
-            {/* COLUMNA DERECHA REAL: todo lo textual para que NUNCA cruce la foto */}
-            <div className="md:ml-[46%]">
-              {/* Párrafo (alineado derecha, con padding vertical) */}
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, ease: "easeOut", delay: 0.05 }}
-                className="text-center md:text-right text-[#2f2a27]/90 text-base md:text-lg leading-relaxed max-w-[60ch] mx-auto md:ml-auto mt-[5em] pt-6 pb-4"
-              >
-                Let’s bring your dream look to life! Whether it’s for a wedding,
-                an event, or a personal beauty refresh, Waleska is here to
-                create something magical just for you.
-              </motion.p>
+            {/* Two-column grid on desktop, stack on mobile/tablet */}
+            <div className="md:grid md:grid-cols-12 md:gap-10 lg:gap-14 items-start">
 
-              {/* CTA a la derecha */}
+              {/* Left: heading (desktop col 4–12, starts after smear) */}
               <motion.div
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
-                className="mt-4 flex justify-center md:justify-end"
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.75, ease }}
+                className="md:col-start-4 md:col-span-9 lg:col-start-5 lg:col-span-8 md:pt-12"
               >
-                <a
-                  href="https://wa.me/56964488186"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="rounded-[40px] px-6 md:px-10 py-4 md:py-5 text-[#2f2a27] text-lg md:text-2xl font-medium shadow-sm hover:opacity-95 transition w-full md:w-[560px] text-center"
-                  style={{
-                    background:
-                      "linear-gradient(90deg, rgba(238,226,219,0.95) 0%, rgba(223,210,203,0.92) 100%)",
-                  }}
-                >
-                  Book an appointment today!
-                </a>
+                <span className="flex items-center gap-3 mb-5">
+                  <span className="block h-px w-8 bg-[#B8956A]/70" />
+                  <span className="text-[12px] tracking-[0.14em] uppercase font-body text-[#B8956A]">
+                    {t.eyebrow ?? "Let's connect"}
+                  </span>
+                </span>
+                <h2 className="font-display font-light text-[#FAF7F2] leading-[1.06] text-[clamp(2.4rem,5vw,4rem)]">
+                  {t.heading_line1 ?? "Book Your"}<br />
+                  <em className="italic text-[#B8956A]">{t.heading_accent ?? "Session"}</em>
+                </h2>
               </motion.div>
 
-              {/* Contacto centrado */}
-              <motion.div
-                initial={{ opacity: 0, y: 8 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, ease: "easeOut", delay: 0.15 }}
-                className="mt-8 md:mt-10"
-              >
-                <div className="text-center text-[#2f2a27]">
-                  <p className="text-lg md:text-[28px] leading-tight font-medium">
-                    Serving: Santiago de Chile
+              {/* Right: body text + CTA + contact (desktop col 5–12) */}
+              <div className="md:col-start-5 md:col-span-8 lg:col-start-6 lg:col-span-7 mt-8 md:mt-6">
+                <motion.p
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, ease, delay: 0.08 }}
+                  className="font-body text-[15px] leading-[1.85] text-[#FAF7F2]/62 max-w-[54ch] pb-6"
+                >
+                  {t.p}
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.55, ease, delay: 0.14 }}
+                >
+                  <a
+                    href="https://wa.me/56964488186"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="
+                      inline-flex items-center gap-3
+                      rounded-full px-7 md:px-9 py-3.5 md:py-4
+                      bg-[#B8956A] text-[#2A1F14]
+                      font-body text-[13px] tracking-[0.07em] uppercase font-medium
+                      hover:bg-[#C9A87B] transition-colors duration-300
+                      shadow-[0_8px_28px_rgba(184,149,106,0.32)]
+                      w-full sm:w-auto justify-center sm:justify-start
+                    "
+                  >
+                    {/* WhatsApp logo */}
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                    </svg>
+                    {t.cta ?? "Book an appointment today"}
+                  </a>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, ease, delay: 0.2 }}
+                  className="mt-9 space-y-2.5"
+                >
+                  <p className="font-display text-[#FAF7F2]/75 text-[1.05rem]">
+                    {t.serving ?? "Serving: Santiago de Chile"}
                   </p>
-                  <p className="text-lg md:text-[28px] leading-tight mt-2">
-                    Instagram:{" "}
-                    <a
-                      href="https://instagram.com/lejhanmua"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="underline underline-offset-4 hover:opacity-80"
-                    >
-                      lejhanmua
+                  <p className="font-display text-[#FAF7F2]/75 text-[1.05rem]">
+                    {t.instagram_label ?? "Instagram:"}{" "}
+                    <a href="https://instagram.com/lejhanmua" target="_blank" rel="noreferrer"
+                       className="text-[#B8956A] underline underline-offset-4 hover:opacity-75 transition-opacity">
+                      @lejhanmua
                     </a>
                   </p>
-                  <p className="text-lg md:text-[28px] leading-tight mt-2">
-                    Call/Text:{" "}
-                    <a href="tel:+56964488186" className="hover:opacity-80">
+                  <p className="font-display text-[#FAF7F2]/75 text-[1.05rem]">
+                    {t.call_label ?? "Call / Text:"}{" "}
+                    <a href="tel:+56964488186" className="text-[#B8956A] hover:opacity-75 transition-opacity">
                       +56 9 6448 8186
                     </a>
                   </p>
-                </div>
-              </motion.div>
+                </motion.div>
+              </div>
             </div>
-
-            {/* espacio para que se vean los radios inferiores */}
-            <div className="hidden md:block h-2" />
           </div>
         </div>
       </div>

@@ -1,18 +1,110 @@
 /* app/globals.css */
 @import "tailwindcss";
 
-/* tu CSS adicional debajo */
-:root {
-  --bg: #f5efe9;
-  --ink: #1f1f1f;
-}
-html, body { background: var(--bg); color: var(--ink); }
+/* ─── Design tokens (Tailwind v4 @theme) ──────────────────────────────────── */
+@theme {
+  /* Fonts — next/font sets --font-display & --font-body on <body> via class;
+     these @theme values are the fallbacks that also generate the utility classes
+     (font-display, font-body) used throughout components. */
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
 
+  /* Color palette */
+  --color-ink:           #2A1F14;
+  --color-ink-muted:     rgba(42,31,20,0.65);
+  --color-bg:            #FAF7F2;
+  --color-surface:       #F3EDE4;
+  --color-surface-alt:   #EDE4D8;
+  --color-primary:       #B8956A;
+  --color-primary-light: #E8D5B7;
+  --color-primary-dark:  #7A6135;
+
+  /* Shadows */
+  --shadow-soft: 0 8px 32px rgba(42,31,20,0.07);
+  --shadow-card: 0 16px 48px rgba(42,31,20,0.11);
+  --shadow-glow: 0 0 40px rgba(184,149,106,0.18);
+
+  /* Border radii */
+  --radius-xl:  14px;
+  --radius-2xl: 20px;
+  --radius-3xl: 28px;
+}
+
+/* ─── Base reset & typography ─────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  /* Reserve space for sticky navbar (72px mobile, 80px desktop) so anchor
+     targets aren't hidden behind it */
+  scroll-padding-top: 72px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (min-width: 768px) {
+  html { scroll-padding-top: 80px; }
+}
+
+html, body {
+  background: var(--color-bg, #FAF7F2);
+  color: var(--color-ink, #2A1F14);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* Display font on all headings — also caught by font-display utility class,
+   but this CSS rule is a reliable fallback */
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  letter-spacing: -0.015em;
+  line-height: 1.12;
+}
+
+/* ─── Layout helpers ──────────────────────────────────────────────────────── */
 .container {
   max-width: 72rem;
   margin-inline: auto;
-  padding-inline: 1rem;
+  padding-inline: 1.5rem;
 }
+
 @media (min-width: 640px) {
-  .container { padding-inline: 1.5rem; }
+  .container { padding-inline: 2rem; }
+}
+
+/* ─── Decorative utilities ────────────────────────────────────────────────── */
+/* Thin gold gradient divider */
+.divider {
+  height: 1px;
+  border: none;
+  margin: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-primary-light) 25%,
+    var(--color-primary-light) 75%,
+    transparent 100%
+  );
+}
+
+/* ─── Scrollbar ───────────────────────────────────────────────────────────── */
+::-webkit-scrollbar          { width: 5px; }
+::-webkit-scrollbar-track    { background: var(--color-bg); }
+::-webkit-scrollbar-thumb    { background: var(--color-primary-light); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-primary); }
+
+/* ─── Selection ───────────────────────────────────────────────────────────── */
+::selection { background: var(--color-primary-light); color: var(--color-ink); }
+
+/* ─── Links ───────────────────────────────────────────────────────────────── */
+a { transition: opacity 0.2s ease, color 0.2s ease; }
+
+/* ─── Section scroll-margin ──────────────────────────────────────────────── */
+/* Applied to every section with an id anchor so the sticky nav never overlaps */
+section[id] {
+  scroll-margin-top: 72px;
+}
+
+@media (min-width: 768px) {
+  section[id] { scroll-margin-top: 80px; }
 }

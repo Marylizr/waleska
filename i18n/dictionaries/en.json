@@ -1,0 +1,91 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact",
+    "book": "Book now"
+  },
+  "hero": {
+    "eyebrow": "Makeup Artist",
+    "subtitle": "Hi, I'm Waleska — and I invite you to",
+    "headline": "Elevate your",
+    "headline_accent": "Beauty",
+    "p1": "Makeup is more than just colors and products — it's an expression of self, a celebration of confidence, and a tool to enhance natural beauty. The art of makeup isn't about masking; it's about revealing, enhancing, and empowering.",
+    "p2": "True beauty lies in the details — the gentle highlight that catches the light just right, the soft blend of tones that complement natural features, the perfectly sculpted brows that frame a face with elegance.",
+    "cta_primary": "Book an appointment",
+    "cta_secondary": "About me"
+  },
+  "blockTwo": {
+    "eyebrow": "The Art of Beauty",
+    "heading": "The Subtle Art of Elevating Women's Beauty Through Makeup",
+    "p1": "Each stroke, blend, and finish is carefully curated to reflect personality, mood, and moment. A dewy glow for effortless elegance, a bold lip to make a statement, a sultry eye that captivates with mystery — makeup transforms, but never overpowers.",
+    "p2": "At its core, makeup is about empowerment. When a woman feels beautiful, she radiates confidence from within. The way she carries herself, the way she smiles, the way she steps into the world — it's all touched by the power of artistry.",
+    "p3": "Beauty isn't created — it's revealed. And makeup, when done right, is simply the brushstroke that highlights the masterpiece that already exists."
+  },
+  "blockThree": {
+    "heading_line1": "Premium-quality products, for",
+    "heading_line2": "flawless, long lasting results",
+    "cta": "Book Your Makeup Session Today"
+  },
+  "blockFour": {
+    "eyebrow": "Your Perfect Match",
+    "heading": "Discover the perfect shade tailored to your unique skin tone",
+    "p": "Finding the perfect shade isn't just about color — it's about harmony. The right shade enhances your natural complexion, bringing out your unique beauty while complementing your undertones. Whether you're looking for a flawless foundation match, a radiant blush, or the ideal lipstick, our expert selection ensures a seamless, natural finish that elevates your look effortlessly."
+  },
+  "blockFive": {
+    "eyebrow": "Expertise",
+    "heading": "Always ahead with the latest trends, expert techniques, and flawless styles to create stunning, timeless looks.",
+    "items": [
+      { "title": "Bridal & Special Events", "desc": "Timeless elegance for your most unforgettable moments." },
+      { "title": "Editorial & Fashion", "desc": "Bold, artistic, and trendsetting looks for high-end shoots." },
+      { "title": "Everyday Glam & Soft Beauty", "desc": "A luminous, natural glow for any occasion." }
+    ],
+    "cta": "Book an appointment today"
+  },
+  "blockSix": {
+    "eyebrow": "About",
+    "heading": "About Waleska",
+    "p1": "Enhancing beauty, embracing confidence. Waleska is a professional makeup artist passionate about bringing out the natural beauty in every client. With a refined touch and a keen eye for detail, she transforms makeup into an elevated art form, ensuring you feel confident, radiant, and empowered.",
+    "p2": "Whether it's for a wedding, special event, editorial shoot, or a personalized makeup session, Waleska tailors each look to perfection, reflecting your unique style.",
+    "bullets": [
+      "Skin-first techniques for seamless, luminous finishes.",
+      "Timeless bridal to bold editorial — always modern and refined.",
+      "Hygiene-first kit with high-performance products."
+    ],
+    "btn_services": "View services",
+    "btn_book": "Book now"
+  },
+  "blockSeven": {
+    "eyebrow": "Services",
+    "heading": "Services Offered",
+    "items": [
+      {
+        "title": "Bridal & Wedding Makeup",
+        "desc": "Look flawless on your big day with long-lasting, waterproof bridal makeup that enhances your features while feeling light and comfortable. Tailored trial sessions to find your perfect look."
+      },
+      {
+        "title": "Editorial & Photoshoots",
+        "desc": "High-definition, camera-ready looks for fashion, beauty, and commercial projects. Creative, artistic designs that stand out on any platform."
+      },
+      {
+        "title": "Special Events & Glam Makeup",
+        "desc": "Red-carpet inspired makeup with luminous skin, sculpted features and refined details. Long-wear, comfortable looks perfect for any celebration."
+      },
+      {
+        "title": "Makeup Lessons & Consultations",
+        "desc": "One-on-one tutorials to master techniques, product selection and application tips tailored to your face shape, undertone and style."
+      }
+    ]
+  },
+  "blockEight": {
+    "eyebrow": "Let's connect",
+    "heading_line1": "Book Your",
+    "heading_accent": "Session",
+    "p": "Let's bring your dream look to life! Whether it's for a wedding, an event, or a personal beauty refresh, Waleska is here to create something magical just for you.",
+    "cta": "Book an appointment today",
+    "serving": "Serving: Santiago de Chile",
+    "instagram_label": "Instagram:",
+    "call_label": "Call / Text:"
+  }
+}

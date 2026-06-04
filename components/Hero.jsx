@@ -2,127 +2,150 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 
-export default function Hero() {
-  const reduce = useReducedMotion();
+const ease = [0.25, 0.1, 0.25, 1];
 
-  const fadeUp = {
-    hidden: { opacity: 0, y: 24 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-  };
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.85, ease } },
+};
 
-  const stagger = {
-    hidden: {},
-    show: { transition: { staggerChildren: 0.12 } },
-  };
+const stagger = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.14 } },
+};
+
+export default function Hero({ t = {}, locale = "en" }) {
+  const base = `/${locale}`;
 
   return (
     <section
       id="hero"
       aria-label="Intro section"
-      className="
-        relative
-        pt-10 md:pt-16 lg:pt-20
-        pb-12 md:pb-16
-        bg-[linear-gradient(90deg,rgba(184,154,103,0.12)_0%,rgba(245,239,233,0.6)_45%,transparent_100%)]
-      "
+      className="relative pt-8 md:pt-14 lg:pt-16 pb-16 md:pb-20 overflow-hidden"
+      style={{
+        background:
+          "linear-gradient(115deg, rgba(232,213,183,0.28) 0%, rgba(250,247,242,0.9) 50%, transparent 100%)",
+      }}
     >
-      <div className="container">
-        {/* H3 superior (entra de abajo) */}
-        <motion.h3
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.6 }}
-          className="text-[#5b4b2f] font-semibold leading-snug text-[clamp(1.25rem,3vw,1.75rem)]"
-        >
-          Hi, I’m Waleska Makeup Artist
-        </motion.h3>
+      {/* Decorative background orb */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full opacity-30"
+        style={{
+          background: "radial-gradient(circle at 40% 40%, #E8D5B7 0%, transparent 70%)",
+        }}
+      />
 
-        {/* 12-cols: texto 7 / imagen 5 */}
-        <div className="mt-4 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-          {/* Texto (stagger de hijos) */}
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.5 }}
-            className="lg:col-span-7"
-          >
-            <motion.h1
-              variants={fadeUp}
-              className="text-[#5b4b2f] font-semibold leading-tight text-[clamp(2.25rem,6vw,4.25rem)]"
-            >
-              and I invite you to
-              <br />
-              elevate your <span className="italic">Beauty!</span>
-            </motion.h1>
-
-            <motion.div variants={fadeUp} className="mt-6 space-y-5 text-[15px] leading-7 text-neutral-700 max-w-[62ch]">
-              <p>
-                Makeup is more than just colors and products—it’s an expression of
-                self, a celebration of confidence, and a tool to enhance natural
-                beauty. The art of makeup isn’t about masking; it’s about revealing,
-                enhancing, and empowering.
-              </p>
-              <p>
-                True beauty lies in the details—the gentle highlight that catches
-                the light just right, the soft blend of tones that complement natural
-                features, and perfectly sculpted brows that frame a face with elegance.
-                The mastery of subtle artistry is knowing how to accentuate what’s
-                already there, embracing individuality while adding a touch of refinement
-                and radiance.
-              </p>
-            </motion.div>
-          </motion.div>
-
-          {/* Imagen derecha (fade + slide desde la derecha) */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" } }}
-            viewport={{ once: true, amount: 0.4 }}
-            className="lg:col-span-5 flex items-end justify-end"
-          >
-            <Image
-              src="https://res.cloudinary.com/da6il8qmv/image/upload/v1760529913/Group_oyxuju.png"
-              alt="Beauty portrait hero"
-              width={900}
-              height={900}
-              priority
-              sizes="(min-width:1280px) 520px, (min-width:1024px) 460px, 90vw"
-              className="w-[min(100%,620px)] h-auto"
-            />
-          </motion.div>
-        </div>
-
-        {/* CTA centrado (fade up) */}
+      <div className="container relative">
+        {/* Eyebrow */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.5 }}
-          className="mt-8 lg:mt-10 flex justify-center"
+          animate="show"
+          className="flex items-center gap-3 mb-5"
         >
-          <Link
-            href="#book"
-            className="
-              inline-flex items-center justify-center
-              rounded-[2rem]
-              px-7 sm:px-10
-              h-14 sm:h-16
-              text-white text-lg sm:text-xl font-semibold
-              bg-[linear-gradient(180deg,#b89a67,#7a6135)]
-              shadow-[0_10px_24px_rgba(0,0,0,0.15)]
-              hover:opacity-95
-              transition
-            "
-            aria-label="Book an appointment today"
-          >
-            Book an appointment today!
-          </Link>
+          <span className="block h-px w-8 bg-[#B8956A]/60" />
+          <span className="text-[13px] tracking-[0.14em] uppercase font-body text-[#B8956A]">
+            {t.eyebrow ?? "Makeup Artist"}
+          </span>
         </motion.div>
+
+        {/* Main grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+          {/* Text column */}
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            animate="show"
+            className="lg:col-span-7"
+          >
+            <motion.p
+              variants={fadeUp}
+              className="font-display text-[#7A6135] font-light text-[clamp(1.1rem,2.2vw,1.4rem)] italic mb-3"
+            >
+              {t.subtitle ?? "Hi, I'm Waleska — and I invite you to"}
+            </motion.p>
+
+            <motion.h1
+              variants={fadeUp}
+              className="font-display font-semibold text-[#2A1F14] leading-[1.08] text-[clamp(2.8rem,7vw,5rem)]"
+            >
+              {t.headline ?? "Elevate your"}{" "}
+              <em className="italic text-[#B8956A]">{t.headline_accent ?? "Beauty"}</em>
+            </motion.h1>
+
+            <motion.div
+              variants={fadeUp}
+              className="mt-7 space-y-4 font-body text-[15px] leading-[1.8] text-[#2A1F14]/65 max-w-[58ch]"
+            >
+              <p>{t.p1}</p>
+              <p>{t.p2}</p>
+            </motion.div>
+
+            <motion.div variants={fadeUp} className="mt-9 flex gap-4 flex-wrap">
+              <Link
+                href={`${base}#contact`}
+                className="
+                  inline-flex items-center gap-2.5
+                  rounded-full px-8 py-4
+                  bg-[#2A1F14] text-[#FAF7F2]
+                  font-body text-[13.5px] tracking-[0.06em] uppercase
+                  hover:bg-[#3D2E1E] transition-colors duration-300
+                  shadow-[0_8px_24px_rgba(42,31,20,0.18)]
+                "
+              >
+                {t.cta_primary ?? "Book an appointment"}
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </Link>
+              <Link
+                href={`${base}#about`}
+                className="
+                  inline-flex items-center
+                  rounded-full px-8 py-4
+                  border border-[#2A1F14]/20
+                  text-[#2A1F14]/80
+                  font-body text-[13.5px] tracking-[0.06em] uppercase
+                  hover:border-[#B8956A]/50 hover:text-[#B8956A]
+                  transition-all duration-300
+                "
+              >
+                {t.cta_secondary ?? "About me"}
+              </Link>
+            </motion.div>
+          </motion.div>
+
+          {/* Image column */}
+          <motion.div
+            initial={{ opacity: 0, x: 24, scale: 0.98 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ duration: 1, ease, delay: 0.2 }}
+            className="lg:col-span-5 flex items-end justify-center lg:justify-end"
+          >
+            <div className="relative">
+              <div
+                aria-hidden
+                className="absolute inset-0 -m-6 rounded-full opacity-40 pointer-events-none"
+                style={{ background: "radial-gradient(circle, #E8D5B7 0%, transparent 70%)" }}
+              />
+              <Image
+                src="https://res.cloudinary.com/da6il8qmv/image/upload/v1760529913/Group_oyxuju.png"
+                alt="Beauty portrait"
+                width={900}
+                height={900}
+                priority
+                sizes="(min-width:1280px) 520px, (min-width:1024px) 460px, 88vw"
+                className="relative z-10 w-[min(100%,580px)] h-auto drop-shadow-xl"
+              />
+            </div>
+          </motion.div>
+        </div>
       </div>
+
+      <div className="divider mt-16 mx-auto max-w-4xl" />
     </section>
   );
 }

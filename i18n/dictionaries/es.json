@@ -1,0 +1,91 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre mí",
+    "services": "Servicios",
+    "contact": "Contacto",
+    "book": "Reservar"
+  },
+  "hero": {
+    "eyebrow": "Maquilladora Profesional",
+    "subtitle": "Hola, soy Waleska — y te invito a",
+    "headline": "Elevar tu",
+    "headline_accent": "Belleza",
+    "p1": "El maquillaje es mucho más que colores y productos — es una expresión del ser, una celebración de la confianza y una herramienta para realzar la belleza natural. El arte del maquillaje no se trata de ocultar; se trata de revelar, realzar y empoderar.",
+    "p2": "La verdadera belleza está en los detalles — el iluminador suave que capta la luz perfectamente, la mezcla delicada de tonos que complementa los rasgos naturales, las cejas perfectamente definidas que enmarcan el rostro con elegancia.",
+    "cta_primary": "Reservar una cita",
+    "cta_secondary": "Sobre mí"
+  },
+  "blockTwo": {
+    "eyebrow": "El Arte de la Belleza",
+    "heading": "El Arte Sutil de Realzar la Belleza Femenina con Maquillaje",
+    "p1": "Cada pincelada, difuminado y acabado se cuida meticulosamente para reflejar personalidad, estado de ánimo y el momento. Un brillo natural para una elegancia sin esfuerzo, un labial audaz para hacer una declaración, un ojo sensual que cautiva con misterio — el maquillaje transforma, pero nunca abruma.",
+    "p2": "En su esencia, el maquillaje se trata de empoderamiento. Cuando una mujer se siente hermosa, irradia confianza desde adentro. La forma en que se porta, la forma en que sonríe, la forma en que enfrenta el mundo — todo está tocado por el poder del arte.",
+    "p3": "La belleza no se crea — se revela. Y el maquillaje, cuando se hace bien, es simplemente la pincelada que resalta la obra maestra que ya existe."
+  },
+  "blockThree": {
+    "heading_line1": "Productos de primera calidad, para",
+    "heading_line2": "resultados impecables y duraderos",
+    "cta": "Reserva tu sesión de maquillaje hoy"
+  },
+  "blockFour": {
+    "eyebrow": "Tu Tono Perfecto",
+    "heading": "Descubre el tono perfecto adaptado a tu piel única",
+    "p": "Encontrar el tono perfecto no es solo cuestión de color — es cuestión de armonía. El tono correcto realza tu tez natural, resalta tu belleza única y complementa tus subtonos. Ya sea que busques una base perfecta, un rubor radiante o el labial ideal, nuestra selección experta garantiza un acabado natural e impecable que eleva tu look sin esfuerzo."
+  },
+  "blockFive": {
+    "eyebrow": "Experiencia",
+    "heading": "Siempre a la vanguardia con las últimas tendencias, técnicas expertas y estilos impecables para crear looks impresionantes y atemporales.",
+    "items": [
+      { "title": "Novias y Eventos Especiales", "desc": "Elegancia atemporal para tus momentos más inolvidables." },
+      { "title": "Editorial y Moda", "desc": "Looks audaces, artísticos y de tendencia para sesiones de alto nivel." },
+      { "title": "Glam Cotidiano y Belleza Suave", "desc": "Un brillo luminoso y natural para cualquier ocasión." }
+    ],
+    "cta": "Reservar una cita hoy"
+  },
+  "blockSix": {
+    "eyebrow": "Sobre mí",
+    "heading": "Sobre Waleska",
+    "p1": "Realzando la belleza, abrazando la confianza. Waleska es una maquilladora profesional apasionada por sacar lo mejor de cada clienta. Con un toque refinado y una mirada atenta a los detalles, transforma el maquillaje en una forma de arte elevada, asegurándose de que te sientas segura, radiante y empoderada.",
+    "p2": "Ya sea para una boda, un evento especial, una sesión editorial o una sesión de maquillaje personalizada, Waleska adapta cada look a la perfección, reflejando tu estilo único.",
+    "bullets": [
+      "Técnicas que priorizan la piel para acabados luminosos e impecables.",
+      "Desde novias atemporales hasta editorial audaz — siempre moderno y refinado.",
+      "Kit higiénico con productos de alto rendimiento."
+    ],
+    "btn_services": "Ver servicios",
+    "btn_book": "Reservar"
+  },
+  "blockSeven": {
+    "eyebrow": "Servicios",
+    "heading": "Servicios Ofrecidos",
+    "items": [
+      {
+        "title": "Maquillaje de Novia y Matrimonio",
+        "desc": "Luce impecable en tu gran día con un maquillaje nupcial duradero y resistente al agua que realza tus rasgos sintiéndose ligero y cómodo. Sesiones de prueba personalizadas para encontrar tu look perfecto."
+      },
+      {
+        "title": "Editorial y Sesiones Fotográficas",
+        "desc": "Looks en alta definición y listos para la cámara para proyectos de moda, belleza y publicidad. Diseños creativos y artísticos que destacan en cualquier plataforma."
+      },
+      {
+        "title": "Eventos Especiales y Maquillaje Glam",
+        "desc": "Maquillaje inspirado en alfombra roja con piel luminosa, rasgos esculpidos y detalles refinados. Looks de larga duración y cómodos, perfectos para cualquier celebración."
+      },
+      {
+        "title": "Clases de Maquillaje y Consultas",
+        "desc": "Tutoriales individuales para dominar técnicas, selección de productos y consejos de aplicación adaptados a tu forma de rostro, subtono y estilo."
+      }
+    ]
+  },
+  "blockEight": {
+    "eyebrow": "Hablemos",
+    "heading_line1": "Reserva tu",
+    "heading_accent": "Sesión",
+    "p": "¡Hagamos realidad el look de tus sueños! Ya sea para una boda, un evento o una renovación de belleza personal, Waleska está aquí para crear algo mágico especialmente para ti.",
+    "cta": "Reservar una cita hoy",
+    "serving": "Atendiendo en: Santiago de Chile",
+    "instagram_label": "Instagram:",
+    "call_label": "Llamar / Texto:"
+  }
+}

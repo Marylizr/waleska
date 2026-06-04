@@ -1,57 +1,58 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import React from "react";
+import Link from "next/link";
+
+const ease = [0.25, 0.1, 0.25, 1];
 
 const itemAnim = {
-  hidden: (i) => ({ opacity: 0, x: 28 + i * 6, y: -6 - i * 4, rotate: 0.6 }),
+  hidden:  { opacity: 0, x: 18 },
   visible: (i) => ({
-    opacity: 1,
-    x: 0,
-    y: 0,
-    rotate: 0,
-    transition: { duration: 0.55, ease: "easeOut", delay: 0.12 + i * 0.12 },
+    opacity: 1, x: 0,
+    transition: { duration: 0.65, ease, delay: 0.08 + i * 0.12 },
   }),
 };
 
-export default function BlockFive() {
-  // Offsets para “abrazar” la curva de la paleta (desktop)
-  const curve = [
-    { ml: "-0.25rem", ty: "-0.10rem" },
-    { ml: "1.25rem",  ty: "0.30rem"  },
-    { ml: "3.25rem",  ty: "0.70rem"  },
-  ];
-
-  const items = [
-    { title: "Bridal & Special Events", desc: "Timeless elegance for your unforgettable moments." },
-    { title: "Editorial & Fashion", desc: "Bold, artistic, and trendsetting looks for high-end shoots." },
-    { title: "Everyday Glam & Soft Beauty", desc: "A natural glow for any occasion." },
+export default function BlockFive({ t = {}, locale = "en" }) {
+  const base  = `/${locale}`;
+  const items = t.items ?? [
+    { title: "Bridal & Special Events",    desc: "Timeless elegance for your most unforgettable moments." },
+    { title: "Editorial & Fashion",         desc: "Bold, artistic, and trendsetting looks for high-end shoots." },
+    { title: "Everyday Glam & Soft Beauty", desc: "A luminous, natural glow for any occasion." },
   ];
 
   return (
-    <section  className="scroll-mt-24 w-full bg-white overflow-hidden">
-      <div className="mx-auto max-w-[1200px] px-6 md:px-10 py-14 md:py-20">
-        {/* Título */}
-        <motion.h2
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="text-center text-[#4a3b2a] font-semibold leading-tight text-3xl md:text-5xl max-w-4xl mx-auto"
-        >
-          Always ahead with the latest trends, expert techniques, and flawless
-          styles to create stunning, timeless looks.
-        </motion.h2>
+    <section className="w-full overflow-hidden" style={{ background: "#FAF7F2" }}>
+      <div className="mx-auto max-w-[1200px] px-6 md:px-10 py-16 md:py-24">
 
-        {/* Contenido centrado */}
-        <div className="mt-10 md:mt-14 flex flex-col md:flex-row md:items-start md:gap-12 justify-center">
-          {/* Columna izquierda: paleta (ancho fijo) */}
+        {/* Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.85, ease }}
+          className="text-center max-w-3xl mx-auto"
+        >
+          <span className="inline-flex items-center gap-3 mb-5">
+            <span className="block h-px w-8 bg-[#B8956A]/60" />
+            <span className="text-[12px] tracking-[0.14em] uppercase font-body text-[#B8956A]">
+              {t.eyebrow ?? "Expertise"}
+            </span>
+            <span className="block h-px w-8 bg-[#B8956A]/60" />
+          </span>
+          <h2 className="font-display font-semibold text-[#2A1F14] leading-[1.1] text-[clamp(1.9rem,3.8vw,2.8rem)]">
+            {t.heading}
+          </h2>
+        </motion.div>
+
+        {/* Palette + list */}
+        <div className="mt-12 md:mt-16 flex flex-col md:flex-row md:items-center md:gap-14 justify-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.55, ease: "easeOut" }}
-            className="w-full md:basis-[400px] md:shrink-0 flex justify-center"
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.75, ease }}
+            className="flex justify-center md:basis-[360px] md:shrink-0"
           >
             <Image
               src="https://res.cloudinary.com/da6il8qmv/image/upload/v1760529905/pal_copy_p1jw6t.png"
@@ -59,85 +60,61 @@ export default function BlockFive() {
               width={400}
               height={400}
               priority
-              className="w-[320px] sm:w-[360px] md:w-[400px] h-auto object-contain select-none pointer-events-none"
+              className="w-[260px] sm:w-[320px] md:w-[360px] h-auto object-contain select-none pointer-events-none"
             />
           </motion.div>
 
-          {/* Columna derecha: lista alineada y centrada con respecto al conjunto */}
-          <div className="w-full md:flex-1 md:max-w-[520px]">
-            {/* Desktop: siguiendo curvatura y alineado a un lado */}
-            <div className="hidden md:block">
-              <ul className="space-y-8 -ml-6 lg:-ml-8">
-                {items.map((it, i) => (
-                  <motion.li
-                    key={it.title}
-                    custom={i}
-                    variants={itemAnim}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-120px" }}
-                    className="flex items-start"
-                    style={{
-                      marginLeft: curve[i].ml,
-                      transform: `translateY(${curve[i].ty})`,
-                    }}
-                  >
-                    <span className="mt-[10px] mr-4 inline-block h-3 w-3 rounded-full bg-[#6c5a45]" />
-                    <div>
-                      <h3 className="text-[#4a3b2a] font-semibold text-xl leading-snug">
-                        {it.title}
-                      </h3>
-                      <p className="text-[#4a3b2a]/80 leading-relaxed max-w-[44ch]">
-                        {it.desc}
-                      </p>
-                    </div>
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Móvil: lista limpia centrada */}
-            <div className="md:hidden">
-              <ul className="space-y-8">
-                {items.map((it, i) => (
-                  <motion.li
-                    key={it.title}
-                    custom={i}
-                    variants={itemAnim}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    className="flex items-start"
-                  >
-                    <span className="mt-[10px] mr-3 inline-block h-3 w-3 rounded-full bg-[#6c5a45]" />
-                    <div>
-                      <h3 className="text-[#4a3b2a] font-semibold text-lg leading-snug">
-                        {it.title}
-                      </h3>
-                      <p className="text-[#4a3b2a]/80 leading-relaxed">{it.desc}</p>
-                    </div>
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
+          <div className="w-full md:flex-1 md:max-w-[480px] mt-10 md:mt-0">
+            <ul className="space-y-9">
+              {items.map((it, i) => (
+                <motion.li
+                  key={i}
+                  custom={i}
+                  variants={itemAnim}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.15 }}
+                  className="flex items-start gap-5"
+                >
+                  <span className="mt-[9px] shrink-0 h-px w-6 bg-[#B8956A]" />
+                  <div>
+                    <h3 className="font-display font-semibold text-[#2A1F14] text-[1.22rem] leading-snug">
+                      {it.title}
+                    </h3>
+                    <p className="mt-1 font-body text-[15px] leading-relaxed text-[#2A1F14]/60">
+                      {it.desc}
+                    </p>
+                  </div>
+                </motion.li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        {/* CTA centrado */}
+        {/* CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.55, ease: "easeOut", delay: 0.15 }}
-          className="mt-12 md:mt-16 flex justify-center"
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.65, ease, delay: 0.1 }}
+          className="mt-14 flex justify-center"
         >
-          <a
-            href="#contact"
-            className="inline-block rounded-full px-8 md:px-12 py-4 text-white text-lg md:text-xl font-medium shadow-sm"
-            style={{ backgroundColor: "#7c6a52" }}
+          <Link
+            href={`${base}#contact`}
+            className="
+              inline-flex items-center gap-2.5
+              rounded-full px-8 py-4
+              bg-[#2A1F14] text-[#FAF7F2]
+              font-body text-[13.5px] tracking-[0.06em] uppercase
+              hover:bg-[#3D2E1E] transition-colors duration-300
+              shadow-[0_8px_24px_rgba(42,31,20,0.16)]
+            "
           >
-            Book an appointment today!
-          </a>
+            {t.cta ?? "Book an appointment today"}
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </Link>
         </motion.div>
       </div>
     </section>
