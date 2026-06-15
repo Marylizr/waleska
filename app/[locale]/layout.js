@@ -32,15 +32,6 @@ export default async function LocaleLayout({ children, params }) {
 
   return (
     <>
-      {/* Patch the <html lang> from the nested layout via a script tag.
-          The root layout sets lang="en"; here we correct it for Spanish. */}
-      {locale !== "en" && (
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `document.documentElement.lang = "${locale}";`,
-          }}
-        />
-      )}
       <Navbar locale={locale} t={t.nav} />
       <main>{children}</main>
       <Footer locale={locale} t={t.nav} />
