@@ -7,14 +7,18 @@
     "book": "Book now"
   },
   "hero": {
-    "eyebrow": "Makeup Artist",
-    "subtitle": "Hi, I'm Waleska — and I invite you to",
-    "headline": "Elevate your",
-    "headline_accent": "Beauty",
-    "p1": "Makeup is more than just colors and products — it's an expression of self, a celebration of confidence, and a tool to enhance natural beauty. The art of makeup isn't about masking; it's about revealing, enhancing, and empowering.",
-    "p2": "True beauty lies in the details — the gentle highlight that catches the light just right, the soft blend of tones that complement natural features, the perfectly sculpted brows that frame a face with elegance.",
-    "cta_primary": "Book an appointment",
-    "cta_secondary": "About me"
+    "eyebrow": "Professional Makeup Artist",
+    "headline": "Enhancing your beauty, elevating your confidence",
+    "headline_accent": "confidence",
+    "p1": "Specializing in luxury makeup for special occasions, photoshoots, and unforgettable moments.",
+    "cta_primary": "Book Your Appointment",
+    "cta_secondary": "View Portfolio",
+    "benefit1": "Luxury Experience",
+    "benefit1_desc": "Premium products and exclusive service",
+    "benefit2": "Personalized Look",
+    "benefit2_desc": "Tailored to enhance your natural beauty",
+    "benefit3": "Professional Quality",
+    "benefit3_desc": "High-end makeup for lasting results"
   },
   "blockTwo": {
     "eyebrow": "The Art of Beauty",

@@ -10,8 +10,8 @@ export default function BlockFour({ t = {} }) {
       {/* Desktop: full-bleed portrait on the right */}
       <div className="hidden md:block absolute inset-y-0 right-0 w-[52vw] z-0 pointer-events-none">
         <Image
-          src="https://res.cloudinary.com/da6il8qmv/image/upload/v1760529906/girl_wrxoi5.png"
-          alt="Model"
+          src="/images/waleska/photoshoot.png"
+          alt="Photoshoot makeup look"
           fill
           priority
           className="object-contain object-right"
@@ -68,8 +68,8 @@ export default function BlockFour({ t = {} }) {
               {/* Portrait */}
               <div className="relative w-full h-[460px] rounded-2xl overflow-hidden shadow-[0_16px_48px_rgba(42,31,20,0.12)]">
                 <Image
-                  src="https://res.cloudinary.com/da6il8qmv/image/upload/v1760529906/girl_wrxoi5.png"
-                  alt="Model"
+                  src="/images/waleska/photoshoot.png"
+                  alt="Photoshoot makeup look"
                   fill
                   priority
                   className="object-cover"

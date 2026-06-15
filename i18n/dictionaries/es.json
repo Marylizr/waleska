@@ -8,13 +8,17 @@
   },
   "hero": {
     "eyebrow": "Maquilladora Profesional",
-    "subtitle": "Hola, soy Waleska — y te invito a",
-    "headline": "Elevar tu",
-    "headline_accent": "Belleza",
-    "p1": "El maquillaje es mucho más que colores y productos — es una expresión del ser, una celebración de la confianza y una herramienta para realzar la belleza natural. El arte del maquillaje no se trata de ocultar; se trata de revelar, realzar y empoderar.",
-    "p2": "La verdadera belleza está en los detalles — el iluminador suave que capta la luz perfectamente, la mezcla delicada de tonos que complementa los rasgos naturales, las cejas perfectamente definidas que enmarcan el rostro con elegancia.",
-    "cta_primary": "Reservar una cita",
-    "cta_secondary": "Sobre mí"
+    "headline": "Realzando tu belleza, elevando tu confianza",
+    "headline_accent": "confianza",
+    "p1": "Especializada en maquillaje de lujo para ocasiones especiales, sesiones de fotos y momentos inolvidables.",
+    "cta_primary": "Reserva tu cita",
+    "cta_secondary": "Ver portafolio",
+    "benefit1": "Experiencia de Lujo",
+    "benefit1_desc": "Productos premium y servicio exclusivo",
+    "benefit2": "Look Personalizado",
+    "benefit2_desc": "Diseñado para realzar tu belleza natural",
+    "benefit3": "Calidad Profesional",
+    "benefit3_desc": "Maquillaje de alta gama con resultados duraderos"
   },
   "blockTwo": {
     "eyebrow": "El Arte de la Belleza",

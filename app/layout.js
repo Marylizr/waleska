@@ -4,6 +4,10 @@ import "./globals.css";
 export const metadata = {
   title: "Waleska Makeup Artist",
   description: "Makeup services website",
+  icons: [
+    { rel: "icon", url: "/images/waleska/icono.png", type: "image/png" },
+    { rel: "apple-touch-icon", url: "/images/waleska/icono.png" },
+  ],
 };
 
 const cormorant = Cormorant_Garamond({

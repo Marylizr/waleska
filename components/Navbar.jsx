@@ -53,7 +53,7 @@ export default function Navbar({ locale = "en", t = {} }) {
         <Link href={base} aria-label="Waleska Home" className="flex items-center shrink-0">
           <div className="relative h-10 w-36 sm:h-12 sm:w-44 md:h-14 md:w-52 lg:h-[60px] lg:w-60">
             <Image
-              src="https://res.cloudinary.com/da6il8qmv/image/upload/v1744040315/logo-wale_b8vyuk.png"
+              src="/images/waleska/logo-NEW.png"
               alt="Waleska"
               fill
               sizes="(min-width:1024px) 240px, (min-width:768px) 208px, 144px"

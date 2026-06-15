@@ -36,8 +36,8 @@ export default function BlockTwo({ t = {} }) {
           >
             <div className="relative w-full rounded-2xl overflow-hidden shadow-[0_24px_64px_rgba(42,31,20,0.10)]">
               <Image
-                src="https://res.cloudinary.com/da6il8qmv/image/upload/v1760529912/marylizr_very_beautiful_model_no_makeup_clean_face_and_white_ba_5d74692c-f083-4332-975e-90e3d17e4564_uwpapn.png"
-                alt="Subtle beauty portrait"
+                src="/images/waleska/galery-2.png"
+                alt="Subtle beauty makeup portrait"
                 width={1200}
                 height={820}
                 sizes="(min-width:1280px) 50vw, (min-width:1024px) 50vw, 100vw"

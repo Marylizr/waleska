@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const ease = [0.25, 0.1, 0.25, 1];
 
@@ -17,157 +18,240 @@ const stagger = {
 
 export default function Hero({ t = {}, locale = "en" }) {
   const base = `/${locale}`;
+  const [heroSrc, setHeroSrc] = useState("/images/waleska/bride1-cutout.png");
+
+  const headline = t.headline ?? "Enhancing your beauty, elevating your confidence";
+  const headlineAccent = t.headline_accent ?? (locale === "es" ? "confianza" : "confidence");
+  const headlineParts = headline.split(headlineAccent);
+  const benefits = [
+    {
+      title: t.benefit1 ?? "Luxury Experience",
+      desc: t.benefit1_desc ?? "Premium products and exclusive service",
+      icon: "crown",
+    },
+    {
+      title: t.benefit2 ?? "Personalized Look",
+      desc: t.benefit2_desc ?? "Tailored to enhance your natural beauty",
+      icon: "brush",
+    },
+    {
+      title: t.benefit3 ?? "Professional Quality",
+      desc: t.benefit3_desc ?? "High-end makeup for lasting results",
+      icon: "shield",
+    },
+  ];
 
   return (
     <section
       id="hero"
       aria-label="Intro section"
-      className="relative overflow-hidden"
+      className="relative overflow-hidden bg-[#f6f1e9]"
       style={{
-        background:
-          "linear-gradient(120deg, rgba(232,213,183,0.22) 0%, rgba(250,247,242,1) 55%, rgba(250,247,242,1) 100%)",
-        minHeight: "min(92vh, 820px)",
+        minHeight: "calc(100vh - 72px)",
       }}
     >
-      {/* Soft warm glow top-right */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full opacity-25"
-        style={{ background: "radial-gradient(circle at 40% 40%, #E8D5B7 0%, transparent 65%)" }}
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(246,241,233,0.98) 0%, rgba(246,241,233,0.94) 41%, rgba(246,241,233,0.58) 63%, rgba(246,241,233,0.20) 100%)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 right-0 hidden w-[64%] opacity-70 lg:block"
+        style={{
+          background:
+            "radial-gradient(ellipse at 38% 11%, rgba(255,255,255,0.72) 0 17%, transparent 18%), radial-gradient(ellipse at 55% 28%, rgba(226,214,199,0.42) 0 20%, transparent 21%), radial-gradient(ellipse at 48% 50%, rgba(255,255,255,0.54) 0 19%, transparent 20%), radial-gradient(ellipse at 60% 72%, rgba(226,214,199,0.34) 0 22%, transparent 23%)",
+          filter: "blur(0.4px)",
+          transform: "skewX(-10deg)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-[25%] top-0 hidden h-full w-[260px] opacity-60 lg:block"
+        style={{
+          background:
+            "linear-gradient(112deg, transparent 0 18%, rgba(255,255,255,0.42) 19% 37%, transparent 38% 54%, rgba(255,255,255,0.32) 55% 72%, transparent 73% 100%)",
+          clipPath: "polygon(42% 0, 100% 0, 58% 100%, 0 100%)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-20 top-8 hidden h-[520px] w-[360px] opacity-[0.16] blur-[1px] md:block"
+        style={{
+          background:
+            "radial-gradient(ellipse at 80% 12%, transparent 0 32%, #8f7140 33% 34%, transparent 35%), radial-gradient(ellipse at 55% 30%, transparent 0 34%, #8f7140 35% 36%, transparent 37%), radial-gradient(ellipse at 70% 52%, transparent 0 36%, #8f7140 37% 38%, transparent 39%)",
+          transform: "rotate(-24deg)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute bottom-0 right-[33%] hidden h-full w-[220px] opacity-35 lg:block"
+        style={{
+          background:
+            "linear-gradient(120deg, transparent 0 31%, rgba(255,255,255,0.55) 32% 45%, transparent 46% 100%)",
+          clipPath: "polygon(40% 0, 100% 0, 58% 100%, 0 100%)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute bottom-0 right-0 h-[62%] w-[72%] bg-[radial-gradient(ellipse_at_70%_100%,rgba(186,147,55,0.10),transparent_62%)]"
       />
 
-      <div className="container relative h-full">
-        {/* ── Two-column layout — text left, big image right ── */}
-        <div className="flex flex-col lg:flex-row lg:items-stretch gap-0 min-h-[min(88vh,780px)]">
+      <motion.div
+        initial={{ opacity: 0, x: 28 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1, ease, delay: 0.08 }}
+        className="absolute bottom-0 right-[-2vw] top-auto z-10 hidden w-[56vw] max-w-[690px] lg:block xl:right-[2vw]"
+      >
+        <Image
+          src={heroSrc}
+          alt="Bride with elegant professional makeup"
+          width={928}
+          height={1152}
+          priority
+          sizes="(min-width:1280px) 660px, 56vw"
+          className="h-auto w-full object-contain object-bottom drop-shadow-[0_26px_55px_rgba(42,31,20,0.20)]"
+          onError={() => setHeroSrc("/images/waleska/uniform.png")}
+        />
+      </motion.div>
 
-          {/* ── LEFT: text ─────────────────────────────────── */}
+      <div className="container relative z-20">
+        <div className="grid min-h-[calc(100vh-72px)] grid-cols-1 items-center pt-12 pb-10 lg:grid-cols-[minmax(0,0.48fr)_minmax(0,0.52fr)] lg:pt-10">
           <motion.div
             variants={stagger}
             initial="hidden"
             animate="show"
-            className="flex flex-col justify-center pt-14 pb-12 lg:py-20 lg:w-[52%] lg:pr-10 xl:pr-16"
+            className="max-w-[560px]"
           >
-            {/* Eyebrow */}
-            <motion.div variants={fadeUp} className="flex items-center gap-3 mb-6">
-              <span className="block h-px w-8 bg-[#B8956A]/60" />
-              <span className="text-[12.5px] tracking-[0.16em] uppercase font-body text-[#B8956A]">
-                {t.eyebrow ?? "Makeup Artist"}
+            <motion.div variants={fadeUp} className="mb-6">
+              <span className="font-body text-[12px] font-semibold uppercase tracking-[0.18em] text-[#b18421]">
+                {t.eyebrow ?? "Professional Makeup Artist"}
               </span>
             </motion.div>
 
-            {/* Subtitle — now font-normal + bigger so it reads clearly */}
-            <motion.p
-              variants={fadeUp}
-              className="font-display font-normal text-[#5B3E1F] italic mb-4 text-[clamp(1.25rem,2.4vw,1.65rem)] leading-[1.4]"
-            >
-              {t.subtitle ?? "Hi, I'm Waleska — and I invite you to"}
-            </motion.p>
-
-            {/* Main headline */}
             <motion.h1
               variants={fadeUp}
-              className="font-display font-semibold text-[#2A1F14] leading-[1.05] text-[clamp(3rem,6.5vw,5.2rem)]"
+              className="font-display text-[clamp(3rem,5.8vw,5.05rem)] font-semibold leading-[1.08] text-[#191613]"
             >
-              {t.headline ?? "Elevate your"}{" "}
-              <em className="italic text-[#B8956A]">{t.headline_accent ?? "Beauty"}</em>
+              {headlineParts[0]}
+              {headlineParts.length > 1 && (
+                <span className="text-[#b18421]">{headlineAccent}</span>
+              )}
+              {headlineParts[1]}
             </motion.h1>
 
-            {/* Body copy */}
-            <motion.div
+            <motion.p
               variants={fadeUp}
-              className="mt-7 space-y-4 font-body text-[15.5px] leading-[1.8] text-[#2A1F14]/60 max-w-[54ch]"
+              className="mt-7 max-w-[43ch] font-body text-[15px] leading-[1.75] text-[#3b332a]/76 md:text-[16px]"
             >
-              <p>{t.p1}</p>
-              <p>{t.p2}</p>
-            </motion.div>
+              {t.p1 ?? "Specializing in luxury makeup for special occasions, photoshoots, and unforgettable moments."}
+            </motion.p>
 
-            {/* CTAs */}
-            <motion.div variants={fadeUp} className="mt-10 flex gap-3 flex-wrap">
+            <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-4">
               <Link
                 href={`${base}#contact`}
-                className="
-                  inline-flex items-center gap-2.5
-                  rounded-full px-7 py-3.5
-                  bg-[#2A1F14] text-[#FAF7F2]
-                  font-body text-[13px] tracking-[0.07em] uppercase
-                  hover:bg-[#3D2E1E] transition-colors duration-300
-                  shadow-[0_8px_24px_rgba(42,31,20,0.2)]
-                "
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[5px] bg-[#b18421] px-6 py-3 font-body text-[13px] font-bold text-white shadow-[0_12px_28px_rgba(177,132,33,0.28)] transition-colors duration-300 hover:bg-[#9e741b]"
               >
-                {t.cta_primary ?? "Book an appointment"}
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                <CalendarIcon />
+                {t.cta_primary ?? "Book Your Appointment"}
               </Link>
               <Link
-                href={`${base}#about`}
-                className="
-                  inline-flex items-center
-                  rounded-full px-7 py-3.5
-                  border border-[#2A1F14]/22
-                  text-[#2A1F14]/75
-                  font-body text-[13px] tracking-[0.07em] uppercase
-                  hover:border-[#B8956A]/55 hover:text-[#B8956A]
-                  transition-all duration-300
-                "
+                href={`${base}#portfolio`}
+                className="inline-flex min-h-12 items-center justify-center rounded-[5px] border border-[#b18421]/70 bg-white/42 px-6 py-3 font-body text-[13px] font-semibold text-[#9a741f] transition-colors duration-300 hover:bg-white"
               >
-                {t.cta_secondary ?? "About me"}
+                {t.cta_secondary ?? "View Portfolio"}
               </Link>
+            </motion.div>
+
+            <motion.div
+              variants={fadeUp}
+              className="mt-11 grid max-w-[560px] grid-cols-1 gap-5 sm:grid-cols-3 sm:gap-0"
+            >
+              {benefits.map((benefit, index) => (
+                <div
+                  key={benefit.title}
+                  className="text-center sm:px-5"
+                  style={{
+                    borderLeft: index === 0 ? "0" : "1px solid rgba(177,132,33,0.18)",
+                  }}
+                >
+                  <BenefitIcon type={benefit.icon} />
+                  <h3 className="mt-3 font-display text-[1rem] font-semibold text-[#33291f]">
+                    {benefit.title}
+                  </h3>
+                  <p className="mt-2 text-[12px] leading-relaxed text-[#3b332a]/68">
+                    {benefit.desc}
+                  </p>
+                </div>
+              ))}
             </motion.div>
           </motion.div>
 
-          {/* ── RIGHT: big portrait image ───────────────────── */}
-          {/* Desktop: fills right 48%, stretches full section height */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.96, x: 30 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 1.1, ease, delay: 0.15 }}
-            className="hidden lg:flex lg:w-[48%] items-end justify-center relative"
-          >
-            {/* Warm halo behind the image */}
-            <div
-              aria-hidden
-              className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] h-[80%] rounded-full pointer-events-none"
-              style={{
-                background: "radial-gradient(ellipse at 50% 80%, rgba(232,213,183,0.55) 0%, transparent 68%)",
-                filter: "blur(28px)",
-              }}
-            />
-            <Image
-              src="https://res.cloudinary.com/da6il8qmv/image/upload/v1760529913/Group_oyxuju.png"
-              alt="Waleska, beauty portrait"
-              width={900}
-              height={900}
-              priority
-              sizes="(min-width:1280px) 580px, (min-width:1024px) 48vw"
-              className="relative z-10 w-full max-w-[640px] h-auto object-contain drop-shadow-2xl"
-              style={{ marginBottom: "-2px" }}
-            />
-          </motion.div>
-
-          {/* Mobile: image sits below text, centred and larger */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease, delay: 0.2 }}
-            className="lg:hidden flex justify-center pb-4 -mt-4"
+            transition={{ duration: 0.8, ease, delay: 0.18 }}
+            className="relative z-10 mt-10 flex justify-center lg:hidden"
           >
             <Image
-              src="https://res.cloudinary.com/da6il8qmv/image/upload/v1760529913/Group_oyxuju.png"
-              alt="Waleska, beauty portrait"
-              width={900}
-              height={900}
+              src={heroSrc}
+              alt="Bride with elegant professional makeup"
+              width={928}
+              height={1152}
               priority
-              sizes="88vw"
-              className="w-[82vw] max-w-[420px] h-auto drop-shadow-xl"
+              sizes="90vw"
+              className="w-[76vw] max-w-[380px] object-contain drop-shadow-[0_18px_40px_rgba(42,31,20,0.18)]"
+              onError={() => setHeroSrc("/images/waleska/uniform.png")}
             />
           </motion.div>
-
         </div>
       </div>
-
-      {/* Bottom divider */}
-      <div className="divider" />
     </section>
+  );
+}
+
+function CalendarIcon() {
+  return (
+    <svg aria-hidden width="15" height="15" viewBox="0 0 24 24" fill="none">
+      <rect x="4" y="5" width="16" height="15" rx="2" stroke="currentColor" strokeWidth="2" />
+      <path d="M8 3v4M16 3v4M4 10h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function BenefitIcon({ type }) {
+  const common = {
+    stroke: "#b18421",
+    strokeWidth: 1.6,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    fill: "none",
+  };
+
+  return (
+    <div className="flex justify-center">
+      <svg aria-hidden width="34" height="34" viewBox="0 0 24 24" {...common}>
+        {type === "brush" ? (
+          <>
+            <path d="M14 4l6 6" />
+            <path d="M13 5.5l5.5 5.5-8.8 8.8a3.9 3.9 0 0 1-5.5-5.5L13 5.5z" />
+            <path d="M6.5 17.5l-2.3 2.3" />
+          </>
+        ) : type === "shield" ? (
+          <>
+            <path d="M12 3l7 3v5c0 4.7-2.9 8.2-7 10-4.1-1.8-7-5.3-7-10V6l7-3z" />
+            <path d="M9 12l2 2 4-5" />
+          </>
+        ) : (
+          <>
+            <path d="M12 3l2.2 5 5.3.6-4 3.6 1.1 5.3L12 14.8 7.4 17.5l1.1-5.3-4-3.6 5.3-.6L12 3z" />
+            <path d="M7 21h10" />
+          </>
+        )}
+      </svg>
+    </div>
   );
 }
