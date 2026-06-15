@@ -126,6 +126,7 @@ export default function Footer({ locale = "en", t = {} }) {
         <div className="mt-5 border-t border-white/15 pt-3 text-[11px] text-white/76">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <p>© {year} Waleska Makeup Artist. All rights reserved.</p>
+            <p>Powered by PixelTrend Studio LLC</p>
             <div className="flex gap-12">
               <Link href={base} className="transition-colors duration-200 hover:text-[#c79b3d]">
                 Privacy Policy
