@@ -3,9 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { useState } from "react";
 
 const ease = [0.25, 0.1, 0.25, 1];
+const HERO_IMAGE = "/images/waleska/bride1-cutout.png";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -18,7 +18,6 @@ const stagger = {
 
 export default function Hero({ t = {}, locale = "en" }) {
   const base = `/${locale}`;
-  const [heroSrc, setHeroSrc] = useState("/images/waleska/bride1-cutout.png");
 
   const headline = t.headline ?? "Enhancing your beauty, elevating your confidence";
   const headlineAccent = t.headline_accent ?? (locale === "es" ? "confianza" : "confidence");
@@ -101,30 +100,46 @@ export default function Hero({ t = {}, locale = "en" }) {
       />
 
       <motion.div
+        initial={{ opacity: 0, x: 22 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.9, ease, delay: 0.08 }}
+        className="pointer-events-none absolute right-[-4.75rem] top-7 z-10 block w-[72vw] max-w-[355px] sm:right-[-2rem] sm:top-5 sm:w-[58vw] md:right-[2vw] md:w-[46vw] lg:hidden"
+      >
+        <Image
+          src={HERO_IMAGE}
+          alt="Bride with elegant professional makeup"
+          width={928}
+          height={1152}
+          priority
+          sizes="(max-width:639px) 72vw, (max-width:1023px) 46vw"
+          className="h-auto w-full object-contain object-top drop-shadow-[0_18px_38px_rgba(42,31,20,0.18)]"
+        />
+      </motion.div>
+
+      <motion.div
         initial={{ opacity: 0, x: 28 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1, ease, delay: 0.08 }}
         className="absolute bottom-0 right-[-2vw] top-auto z-10 hidden w-[56vw] max-w-[690px] lg:block xl:right-[2vw]"
       >
         <Image
-          src={heroSrc}
+          src={HERO_IMAGE}
           alt="Bride with elegant professional makeup"
           width={928}
           height={1152}
           priority
           sizes="(min-width:1280px) 660px, 56vw"
           className="h-auto w-full object-contain object-bottom drop-shadow-[0_26px_55px_rgba(42,31,20,0.20)]"
-          onError={() => setHeroSrc("/images/waleska/uniform.png")}
         />
       </motion.div>
 
       <div className="container relative z-20">
-        <div className="grid min-h-[calc(100vh-72px)] grid-cols-1 items-center pt-12 pb-10 lg:grid-cols-[minmax(0,0.48fr)_minmax(0,0.52fr)] lg:pt-10">
+        <div className="grid min-h-[calc(100svh-72px)] grid-cols-1 items-start pt-9 pb-10 lg:min-h-[calc(100vh-72px)] lg:grid-cols-[minmax(0,0.48fr)_minmax(0,0.52fr)] lg:items-center lg:pt-10">
           <motion.div
             variants={stagger}
             initial="hidden"
             animate="show"
-            className="max-w-[560px]"
+            className="relative z-20 max-w-[560px]"
           >
             <motion.div variants={fadeUp} className="mb-6">
               <span className="font-body text-[12px] font-semibold uppercase tracking-[0.18em] text-[#b18421]">
@@ -134,7 +149,7 @@ export default function Hero({ t = {}, locale = "en" }) {
 
             <motion.h1
               variants={fadeUp}
-              className="font-display text-[clamp(3rem,5.8vw,5.05rem)] font-semibold leading-[1.08] text-[#191613]"
+              className="max-w-[12ch] font-display text-[clamp(2.75rem,13vw,4.15rem)] font-semibold leading-[1.05] text-[#191613] sm:max-w-[13ch] sm:text-[clamp(3.35rem,9vw,4.75rem)] lg:max-w-none lg:text-[clamp(3rem,5.8vw,5.05rem)] lg:leading-[1.08]"
             >
               {headlineParts[0]}
               {headlineParts.length > 1 && (
@@ -145,7 +160,7 @@ export default function Hero({ t = {}, locale = "en" }) {
 
             <motion.p
               variants={fadeUp}
-              className="mt-7 max-w-[43ch] font-body text-[15px] leading-[1.75] text-[#3b332a]/76 md:text-[16px]"
+              className="mt-6 max-w-[26ch] font-body text-[15px] leading-[1.75] text-[#3b332a]/82 sm:max-w-[34ch] md:text-[16px] lg:mt-7 lg:max-w-[43ch] lg:text-[#3b332a]/76"
             >
               {t.p1 ?? "Specializing in luxury makeup for special occasions, photoshoots, and unforgettable moments."}
             </motion.p>
@@ -190,23 +205,6 @@ export default function Hero({ t = {}, locale = "en" }) {
             </motion.div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease, delay: 0.18 }}
-            className="relative z-10 mt-10 flex justify-center lg:hidden"
-          >
-            <Image
-              src={heroSrc}
-              alt="Bride with elegant professional makeup"
-              width={928}
-              height={1152}
-              priority
-              sizes="90vw"
-              className="w-[76vw] max-w-[380px] object-contain drop-shadow-[0_18px_40px_rgba(42,31,20,0.18)]"
-              onError={() => setHeroSrc("/images/waleska/uniform.png")}
-            />
-          </motion.div>
         </div>
       </div>
     </section>
