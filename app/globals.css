@@ -6,8 +6,8 @@
   /* Fonts — next/font sets --font-display & --font-body on <body> via class;
      these @theme values are the fallbacks that also generate the utility classes
      (font-display, font-body) used throughout components. */
-  --font-display: "Cormorant Garamond", Georgia, serif;
-  --font-body: "DM Sans", system-ui, sans-serif;
+  --font-display: "Roboto", system-ui, sans-serif;
+  --font-body: "Roboto", system-ui, sans-serif;
 
   /* Color palette */
   --color-ink:           #2A1F14;

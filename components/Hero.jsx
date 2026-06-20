@@ -149,7 +149,7 @@ export default function Hero({ t = {}, locale = "en" }) {
 
             <motion.h1
               variants={fadeUp}
-              className="max-w-[12ch] font-display text-[clamp(2.75rem,13vw,4.15rem)] font-semibold leading-[1.05] text-[#191613] sm:max-w-[13ch] sm:text-[clamp(3.35rem,9vw,4.75rem)] lg:max-w-none lg:text-[clamp(3rem,5.8vw,5.05rem)] lg:leading-[1.08]"
+              className="max-w-[12ch] font-display text-[2.3rem] font-semibold leading-[1.05] text-[#191613] sm:max-w-[13ch] sm:text-[clamp(3.35rem,9vw,4.75rem)] lg:max-w-none lg:text-[clamp(3rem,5.8vw,5.05rem)] lg:leading-[1.08]"
             >
               {headlineParts[0]}
               {headlineParts.length > 1 && (

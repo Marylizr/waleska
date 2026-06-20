@@ -7,8 +7,8 @@ export default function Portfolio() {
     { src: "/images/waleska/galery-1.png", fallback: "https://res.cloudinary.com/da6il8qmv/image/upload/v1760529905/portfolio1.png" },
     { src: "/images/waleska/galery-2.png", fallback: "https://res.cloudinary.com/da6il8qmv/image/upload/v1760529905/portfolio2.png" },
     { src: "/images/waleska/galery-3.png", fallback: "https://res.cloudinary.com/da6il8qmv/image/upload/v1760529905/portfolio3.png" },
-    { src: "/images/waleska/bride1.png", fallback: "https://res.cloudinary.com/da6il8qmv/image/upload/v1760529905/portfolio4.png" },
-    { src: "/images/waleska/uniform.png", fallback: "https://res.cloudinary.com/da6il8qmv/image/upload/v1760529905/portfolio5.png" },
+    { src: "/images/waleska/birdal-card.png", fallback: "https://res.cloudinary.com/da6il8qmv/image/upload/v1760529905/portfolio5.png" },
+    { src: "/images/waleska/social-makeup.png", fallback: "https://res.cloudinary.com/da6il8qmv/image/upload/v1760529905/portfolio4.png" },
   ];
 
   return (

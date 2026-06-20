@@ -1,4 +1,4 @@
-import { Cormorant_Garamond, DM_Sans } from "next/font/google";
+import { Roboto } from "next/font/google";
 import "./globals.css";
 
 export const metadata = {
@@ -10,16 +10,18 @@ export const metadata = {
   ],
 };
 
-const cormorant = Cormorant_Garamond({
+const robotoDisplay = Roboto({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "700", "900"],
   style: ["normal", "italic"],
   variable: "--font-display",
   display: "swap",
 });
 
-const dmSans = DM_Sans({
+const robotoBody = Roboto({
   subsets: ["latin"],
+  weight: ["300", "400", "500", "700", "900"],
+  style: ["normal", "italic"],
   variable: "--font-body",
   display: "swap",
 });
@@ -27,7 +29,7 @@ const dmSans = DM_Sans({
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${cormorant.variable} ${dmSans.variable}`}>
+      <body className={`${robotoDisplay.variable} ${robotoBody.variable}`}>
         {children}
       </body>
     </html>

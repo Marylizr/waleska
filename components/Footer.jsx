@@ -30,15 +30,15 @@ export default function Footer({ locale = "en", t = {} }) {
     <footer
       className="w-full border-t border-[#b8953f]/45 bg-[#1d1915] text-white"
     >
-      <div className="mx-auto max-w-[1240px] px-6 md:px-10 pt-5 pb-4">
+      <div className="mx-auto max-w-[1240px] px-6 pt-5 pb-4 md:px-10">
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.65, ease }}
-          className="grid gap-8 md:grid-cols-[1.25fr_0.7fr_0.95fr_1.3fr]"
+          className="grid grid-cols-2 gap-x-6 gap-y-5 md:grid-cols-[1.25fr_0.7fr_0.95fr_1.3fr] md:gap-8"
         >
-          <div>
+          <div className="col-span-2 flex items-center justify-between gap-4 md:col-span-1 md:block">
             <Link href={base} className="inline-block">
               <div className="relative h-[58px] w-[168px]">
                 <Image
@@ -50,10 +50,10 @@ export default function Footer({ locale = "en", t = {} }) {
                 />
               </div>
             </Link>
-            <p className="mt-3 max-w-[220px] text-[13px] leading-snug text-white/78">
+            <p className="mt-3 hidden max-w-[220px] text-[13px] leading-snug text-white/78 md:block">
               Enhancing your natural beauty with professional makeup and a luxury experience.
             </p>
-            <div className="mt-4 flex items-center gap-3">
+            <div className="flex items-center gap-2 md:mt-4 md:gap-3">
               <SocialLink href="https://instagram.com/lejhanmua" label="Instagram">
                 <InstagramIcon />
               </SocialLink>
@@ -68,7 +68,7 @@ export default function Footer({ locale = "en", t = {} }) {
 
           <div>
             <h3 className="font-body text-[13px] font-bold text-white">Quick Links</h3>
-            <nav className="mt-3 flex flex-col gap-1.5">
+            <nav className="mt-2 flex flex-col gap-1 md:mt-3 md:gap-1.5">
               {LINKS.map(({ href, label }) => (
                 <Link
                   key={href}
@@ -83,7 +83,7 @@ export default function Footer({ locale = "en", t = {} }) {
 
           <div>
             <h3 className="font-body text-[13px] font-bold text-white">Services</h3>
-            <ul className="mt-3 space-y-2">
+            <ul className="mt-2 space-y-1 md:mt-3 md:space-y-2">
               {SERVICES.map((service) => (
                 <li key={service} className="text-[13px] leading-tight text-white/86">
                   {service}
@@ -92,9 +92,9 @@ export default function Footer({ locale = "en", t = {} }) {
             </ul>
           </div>
 
-          <div>
+          <div className="col-span-2 md:col-span-1">
             <h3 className="font-body text-[13px] font-bold text-white">Contact</h3>
-            <ul className="mt-3 space-y-3 text-[13px] leading-snug text-white/86">
+            <ul className="mt-2 grid grid-cols-2 gap-x-5 gap-y-2 text-[13px] leading-snug text-white/86 md:mt-3 md:block md:space-y-3">
               <li className="flex items-start gap-3">
                 <PhoneIcon />
                 <a href="tel:+56964488186" className="transition-colors duration-200 hover:text-[#c79b3d]">
@@ -124,10 +124,10 @@ export default function Footer({ locale = "en", t = {} }) {
         </motion.div>
 
         <div className="mt-5 border-t border-white/15 pt-3 text-[11px] text-white/76">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="grid grid-cols-2 gap-x-5 gap-y-2 sm:flex sm:items-center sm:justify-between">
             <p>© {year} Waleska Makeup Artist. All rights reserved.</p>
             <p>Powered by PixelTrend Studio LLC</p>
-            <div className="flex gap-12">
+            <div className="col-span-2 flex gap-6 sm:gap-12">
               <Link href={base} className="transition-colors duration-200 hover:text-[#c79b3d]">
                 Privacy Policy
               </Link>
